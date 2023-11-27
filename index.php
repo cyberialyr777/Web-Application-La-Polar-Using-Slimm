@@ -33,26 +33,12 @@ $capsule -> setAsGlobal();
 $app->setBasePath('/proyecto_slim');
 $app->get('/home', HomeController::class . ':index');
 $app->get('/clientes', ClientesController::class . ':index');
-$app->post('/clientes', function (Request $request, Response $response) {
-    $action = $request->getParam('action');
-
-    switch ($action) {
-        case 'agregar':
-            // Llamar a la función agregar_cliente del controlador
-            return ClientesController::agregar_cliente($request, $response);
-
-        case 'eliminar':
-            // Llamar a la función eliminar_cliente del controlador
-            return ClientesController::eliminar_cliente($request, $response);
-
-        default:
-            $response->getBody()->write('Acción desconocida');
-            return $response;
-    }
-});
-// $app->post('/clientes', ClientesController::class . ':agregar_cliente');
-// $app->post('/clientes', ClientesController::class . ':eliminar_cliente');
+$app->post('/clientes', ClientesController::class . ':agregar_cliente');
+$app->post('/clientesEliminar', ClientesController::class . ':eliminar_cliente');
+$app->post('/EditarCliente', ClientesController::class . ':editar_cliente');
+$app->post('/PaginaEditarClientes', ClientesController::class . ':indexEditar');
 $app->get('/proveedores', ProveedoresController::class . ':index');
+$app->post('/proveedores', ProveedoresController::class . ':agregar_proveedor');
 $app->get('/credito', CreditoController::class . ':index');
 $app->get('/inventario', InventarioController::class . ':index');
 $app->get('/facturas', FacturasController::class . ':index');

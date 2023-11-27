@@ -7,10 +7,10 @@ use \Illuminate\Database\Eloquent\Model as Eloquent;
 class Clientes extends Eloquent
 {
     protected $table = 'clientes';
+    protected $primaryKey = 'ID_CLIENTE';
     protected $fillable = [
-        'ID_CLIENTE',
         'ID_MUNICIPIO',
-        'ED_ESTADO',
+        'ID_ESTADO',
         'ID_COLONIA',
         'NOMBRE',
         'TELEFONO',

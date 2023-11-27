@@ -182,9 +182,9 @@
                                     </div>
                                     <select class="form-select" name="id_cliente" aria-label="Seleccionar cliente">
                                         <option value="" selected disabled>Seleccionar cliente/empresa</option>
-                                        <?php foreach ($clientes as $cliente) { ?>
-                                            <option value="<?php echo $cliente['ID_CLIENTE']; ?>"><?php echo $cliente['NOMBRE']; ?></option>
-                                        <?php } ?>
+                                        {% for c in cobros %}
+                                            <option value="{{p.ID_CLIENTE}}">{{p.NOMBRE}}</option>
+                                        {% endfor %}
                                     </select>
 
                                     <div>

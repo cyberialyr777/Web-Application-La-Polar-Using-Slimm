@@ -20,4 +20,23 @@ class ProveedoresController {
         $params = ['proveedores' => $reg, 'municipios' => $municipios, 'colonias' => $colonias, 'estados' => $estados];
         return $view->render($response, "proveedores.html", $params);
     }
+    public function agregar_proveedor (Request $request, Response $response, array $args)
+    {
+        $view = Twig::fromRequest($request);
+        $data = $request->getParsedBody();
+        $nuevoCliente = new Proveedores();
+        $nuevoCliente->NOMBRE = $data['nombre'];
+        $nuevoCliente->TELEFONO = $data['telefono'];
+        $nuevoCliente->C_P_ = $data['cp'];
+        $nuevoCliente->ID_MUNICIPIO = $data['id_municipio'];
+        $nuevoCliente->ID_COLONIA = $data['id_colonia'];
+        $nuevoCliente->ID_ESTADO = $data['id_estado'];
+        $nuevoCliente->CORREO = $data['correo'];
+        $nuevoCliente->REPRESENTANTE_NOMBRE = $data['representante_nombre'];
+        $nuevoCliente->REPRESENTANTE_APELLIDO_PATERNO = $data['representante_apellido_paterno'];
+        $nuevoCliente->FECHA_CREACION = date('Y-m-d H:i:s');
+        $nuevoCliente->FECHA_ACTUALIZACION = date('Y-m-d H:i:s');
+        $nuevoCliente->save();
+        header('location: proveedores');
+    }
 }
