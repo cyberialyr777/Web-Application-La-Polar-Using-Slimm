@@ -49,5 +49,35 @@ class ClientesController
         $delete->delete();
         header('location: clientes');
     }
+    public function indexEditar(Request $request, Response $response, array $args)
+    {
+        $view = Twig::fromRequest($request);
+        $municipios = Municipios::get();
+        $colonias = Colonias::get();
+        $estados = Estados::get();
+        $data = $request->getParsedBody();
+        $id = $data['id'];
+        $query = Clientes::where('ID_CLIENTE',$id)->get();
+        $params = ['clientes' => $query, 'municipios' => $municipios, 'colonias' => $colonias, 'estados' => $estados];
+        return $view->render($response, "editar_clientes.html", $params);
+    }
+    public function editar_cliente (Request $request, Response $response, array $args)
+    {
+        $data = $request->getParsedBody();
+        $id = $data['id'];
+        $nuevoCliente = Clientes::find($id);
+        $nuevoCliente->NOMBRE = $data['nombre'];
+        $nuevoCliente->TELEFONO = $data['telefono'];
+        $nuevoCliente->C_P_ = $data['cp'];
+        $nuevoCliente->ID_MUNICIPIO = $data['id_municipio'];
+        $nuevoCliente->ID_COLONIA = $data['id_colonia'];
+        $nuevoCliente->ID_ESTADO = $data['id_estado'];
+        $nuevoCliente->CORREO = $data['correo'];
+        $nuevoCliente->REPRESENTANTE_NOMBRE = $data['representante_nombre'];
+        $nuevoCliente->REPRESENTANTE_APELLIDO_PATERNO = $data['representante_apellido_paterno'];
+        $nuevoCliente->FECHA_ACTUALIZACION = date('Y-m-d H:i:s');
+        $nuevoCliente->save();
+        header('location: clientes');
+    }
 }
 ?>
