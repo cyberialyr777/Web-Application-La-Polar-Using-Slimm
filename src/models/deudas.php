@@ -3,21 +3,20 @@
 namespace App\Models;
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Cobros extends Eloquent {
-    protected $table = 'cobros';
+class Deudas extends Eloquent {
+    protected $table = 'deudas';
     protected $primaryKey = 'NUMERO_DE_FACTURA';
     protected $fillable = [
-        'ID_CLIENTE',
+        'ID_PROVEEDOR',
         'MONTO',
         'FECHA_LIMITE',
-        'SERVICIO',
         'FECHA_CREACION',
         'FECHA_ACTUALIZACION'
     ];
     public $timestamps = [];
-    public function cliente()
+    public function proveedor()
     {
-        return $this->belongsTo(Clientes::class, 'ID_CLIENTE', 'id_cliente');
+        return $this->belongsTo(Proveedores::class, 'ID_PROVEEDOR', 'id_proveedor');
     }
 }
 ?>

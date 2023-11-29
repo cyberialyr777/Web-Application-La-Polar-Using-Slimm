@@ -5,13 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inicio.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/clientes.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/proveedores.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/facturas.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inventario.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css">
     <link rel="icon" type="image/x-icon" href="assets/img/logo-azul.ico">
 
     <title>La Polar</title>
@@ -150,17 +144,50 @@
                     </a>
                 </div>
             </div>
-            {% block CUERPO%}
+            {% for i in inventario %}
+            <div class="col-sm-9" style="margin-bottom: 230px;">
+                <div class="container formulario">
+                    <form method="post" class="form" action="EditarInventario" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="txtID" class="form-label id">ID</label>
+                            <input value="{{i.ID_REFACCION}}" readonly type="text" class="form-control id" name="id" id="txtID" placeholder="{{i.ID_REFACCION}}">
+                          </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Refaccion</label>
+                            <input value="{{i.REFACCION}}" type="text" class="form-control nombre"
+                                name="refaccion" id="nombre" placeholder="Banda">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Cantidad</label>
+                            <input value="{{i.CANTIDAD}}" type="text" class="form-control telefono"
+                                name="cantidad" id="telefono" placeholder="9">
+                        </div>
+                        <select style="margin-bottom: 2%;" class="form-select" name="id_marca"
+                            aria-label="Seleccionar marca">
+                            <option value="" disabled>Seleccionar marca</option>
+                            {% for i in marcas %}
+                            <option value="{{i.ID_MARCA}}"> {{i.MARCA}} 
+                            </option>
+                            {%endfor%}
+                        </select>
 
-            {% endblock %}
+                        <select style="margin-bottom: 2%;" class="form-select" name="id_modelo"
+                            aria-label="Seleccionar modelo">
+                            <option value="" disabled>Seleccionar modelo</option>
+                            {% for i in modelos %}
+                            <option value="{{i.ID_MODELO}}"> {{i.MODELO}} 
+                            </option>
+                            {%endfor%}
+                        </select>
+                        <div>
+                            <button name="guardar" type="submit" class="guardar-btn btn">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+                {%endfor%}
+            </div>
     </main>
     <script src="assets/js/popover.js"></script>
-    <script src="assets/js/busqueda_clientes.js"></script>
-    <script src="assets/js/busqueda_cobranza.js"></script>
-    <script src="assets/js/busqueda_credito.js"></script>
-    <script src="assets/js/busqueda_facturas.js"></script>
-    <script src="assets/js/busqueda_inventario.js"></script>
-    <script src="assets/js/busqueda_proveedores.js"></script>
 </body>
 
 </html>

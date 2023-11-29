@@ -5,13 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inicio.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/clientes.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/proveedores.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/facturas.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inventario.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css">
     <link rel="icon" type="image/x-icon" href="assets/img/logo-azul.ico">
 
     <title>La Polar</title>
@@ -150,17 +144,86 @@
                     </a>
                 </div>
             </div>
-            {% block CUERPO%}
+{% for c in clientes %}
+      <div class="col-sm-9" style="margin-bottom: 230px;">
+        <div class="container formulario">
+          <form method="post" class="form" action="EditarCliente" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="txtID" class="form-label id">ID</label>
+              <input value="{{c.ID_CLIENTE}}" readonly type="text" class="form-control id" name="id" id="txtID" placeholder="{{c.ID_CLIENTE}}">
+            </div>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input value="{{c.NOMBRE}}" type="text" class="form-control nombre" name="nombre" id="nombre" placeholder="{{c.NOMBRE}}">
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input value="{{c.TELEFONO}}" type="text" class="form-control telefono" name="telefono" id="telefono" placeholder="{{c.TELEFONO}}">
+            </div>
+            <div class="mb-3">
+              <label for="calle" class="form-label">Calle</label>
+              <input value="{{c.CALLE}}" type="text" class="form-control calle" name="calle" id="calle" placeholder="{{c.CALLE}}">
+            </div>
+            <div class="mb-3">
+              <label for="numero" class="form-label">Numero</label>
+              <input value="{{c.NUMERO}}" type="text" class="form-control numero" name="numero" id="numero" placeholder="{{c.NUMERO}}">
+            </div>
+            <div class="mb-3">
+              <label for="cp" class="form-label">C.P.</label>
+              <input value="{{c.C_P_}}" type="text" class="form-control cp" name="cp" id="cp" placeholder="{{c.C_P_}}">
+            </div>
 
-            {% endblock %}
-    </main>
-    <script src="assets/js/popover.js"></script>
-    <script src="assets/js/busqueda_clientes.js"></script>
-    <script src="assets/js/busqueda_cobranza.js"></script>
-    <script src="assets/js/busqueda_credito.js"></script>
-    <script src="assets/js/busqueda_facturas.js"></script>
-    <script src="assets/js/busqueda_inventario.js"></script>
-    <script src="assets/js/busqueda_proveedores.js"></script>
+
+            <select class="form-select muni" name="id_municipio" aria-label="Seleccionar municipio">
+              <option value="" disabled>Seleccionar municipio</option>
+              {% for p in municipios%}
+              <option value="{{p.ID_MUNICIPIO}}">
+                {{p.NOMBRE}}
+              </option>
+              {% endfor %}
+            </select>
+
+            <select class="form-select esta" name="id_estado" aria-label="Seleccionar estado">
+            <option value="" disabled>Seleccionar estado</option>
+            {% for p in estados%}
+            <option value="{{p.ID_ESTADO}}">
+              {{p.NOMBRE}}
+            </option>
+            {% endfor %}
+            </select>
+
+            <select class="form-select colo" name="id_colonia" aria-label="Seleccionar colonia">
+            <option value="" disabled>Seleccionar colonia</option>
+            {% for p in colonias %}
+            <option value="{{p.ID_COLONIA}}">
+              {{p.NOMBRE}}
+            </option>
+            {%endfor%}
+            </select>
+
+
+
+            <div class="mb-3">
+              <label for="correo" class="form-label correo">Correo</label>
+              <input value="{{c.CORREO}}" type="text" class="form-control correo" name="correo" id="correo" placeholder="samurai@gmail.com">
+            </div>
+            <div class="mb-3">
+              <label for="representante_nombre" class="form-label">Representante nombre</label>
+              <input value="{{c.REPRESENTANTE_NOMBRE}}" type="text" class="form-control representante_nombre" name="representante_nombre" id="representante_nombre" placeholder="Juan">
+            </div>
+            <div class="mb-3">
+              <label for="representante_apellido_paterno" class="form-label">Representante apellido paterno</label>
+              <input value="{{c.REPRESENTANTE_APELLIDO_PATERNO}}" type="text" class="form-control representante_apellido_paterno" name="representante_apellido_paterno" id="representante_apellido_paterno" placeholder="González">
+            </div>
+            <div>
+              <button name="guardar" type="submit" class="guardar-btn btn">Guardar</button>
+            </div>
+          </form>
+        </div>
+{%endfor%}
+</div>
+</main>
+<script src="assets/js/popover.js"></script>
 </body>
 
 </html>

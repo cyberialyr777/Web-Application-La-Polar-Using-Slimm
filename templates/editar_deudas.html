@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assets/jquery/jquery.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inicio.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/clientes.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/proveedores.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/facturas.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inventario.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="assets/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.css">
     <link rel="icon" type="image/x-icon" href="assets/img/logo-azul.ico">
 
     <title>La Polar</title>
@@ -150,17 +150,47 @@
                     </a>
                 </div>
             </div>
-            {% block CUERPO%}
+            {% for d in deudas %}
+            <div class="col-sm-9" style="margin-bottom: 230px;">
+                <div class="container formulario">
+                    <form method="post" class="form" action="EditarDeudas">
+                        <div class="form">
+                            <div class="mb-3">
+                                <label for="numero_de_factura" class="form-label">Número de factura</label>
+                                <input readonly value="{{d.NUMERO_DE_FACTURA}}" type="text" class="form-control numero_de_factura" name="numero_de_factura" id="formGroupExampleInput2" placeholder="56">
+                            </div>
+                            <select class="form-select" name="id_proveedor" aria-label="Seleccionar cliente/empresa" style="margin-bottom: 1%;">
+                                <option value="" disabled>Seleccionar cliente/empresa</option>
+                                {% for d in proveedores %}
+                                    <option value="{{d.ID_PROVEEDOR}}"> {{d.NOMBRE}} </option>
+                                {% endfor %}
+                            </select>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">En crédito</label>
+                                <input name="monto" value="{{d.MONTO}}" type="text" class="form-control" id="formGroupExampleInput2" placeholder="2344">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Fecha Límite</label>
+                                <div class="input-group date fj-date">
+                                    <input value="{{d.FECHA_LIMITE}}" name="fecha_limite" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                </div>
+                            </div>
 
-            {% endblock %}
+                            <div>
+                                <button type="submit" class="guardar-btn btn">Guardar</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+
+
+            </div>
+                {%endfor%}
+            </div>
     </main>
     <script src="assets/js/popover.js"></script>
-    <script src="assets/js/busqueda_clientes.js"></script>
-    <script src="assets/js/busqueda_cobranza.js"></script>
-    <script src="assets/js/busqueda_credito.js"></script>
-    <script src="assets/js/busqueda_facturas.js"></script>
-    <script src="assets/js/busqueda_inventario.js"></script>
-    <script src="assets/js/busqueda_proveedores.js"></script>
 </body>
 
 </html>

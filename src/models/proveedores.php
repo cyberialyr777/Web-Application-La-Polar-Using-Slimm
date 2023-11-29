@@ -7,8 +7,8 @@ use \Illuminate\Database\Eloquent\Model as Eloquent;
 class Proveedores extends Eloquent
 {
     protected $table = 'proveedores';
+    protected $primaryKey = 'ID_PROVEEDOR';
     protected $fillable = [
-        'ID_PROVEEDOR',
         'ID_MUNICIPIO',
         'ED_ESTADO',
         'ID_COLONIA',
