@@ -30,6 +30,8 @@ class ClientesController
         $nuevoCliente->NOMBRE = $data['nombre'];
         $nuevoCliente->TELEFONO = $data['telefono'];
         $nuevoCliente->C_P_ = $data['cp'];
+        $nuevoCliente->CALLE = $data['calle'];
+        $nuevoCliente->NUMERO = $data['numero'];
         $nuevoCliente->ID_MUNICIPIO = $data['id_municipio'];
         $nuevoCliente->ID_COLONIA = $data['id_colonia'];
         $nuevoCliente->ID_ESTADO = $data['id_estado'];
@@ -69,6 +71,8 @@ class ClientesController
         $nuevoCliente->NOMBRE = $data['nombre'];
         $nuevoCliente->TELEFONO = $data['telefono'];
         $nuevoCliente->C_P_ = $data['cp'];
+        $nuevoCliente->CALLE = $data['calle'];
+        $nuevoCliente->NUMERO = $data['numero'];
         $nuevoCliente->ID_MUNICIPIO = $data['id_municipio'];
         $nuevoCliente->ID_COLONIA = $data['id_colonia'];
         $nuevoCliente->ID_ESTADO = $data['id_estado'];
@@ -78,6 +82,6 @@ class ClientesController
         $nuevoCliente->FECHA_ACTUALIZACION = date('Y-m-d H:i:s');
         $nuevoCliente->save();
         header('location: clientes');
-    }
+            }
 }
 ?>

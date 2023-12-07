@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,9 @@
     <link rel="icon" type="image/x-icon" href="assets/img/logo-azul.ico">
     <title>La Polar</title>
 </head>
+
 <body>
-    
+
     <div class="container-fluid">
         <div class="contenedor-verde">
             <img class="logo" src="assets/img/logo-azul.png" alt="User" height="155 px" />
@@ -20,21 +22,24 @@
                 <h2 class="texto-inicio-sesion">Inicia sesión con tu email corporativo.</h2>
             </div>
             <div>
-                <form action="procesar_inicio_sesion.php" method="POST">
+                <form method="POST" id="demo-form">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" name="correo" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="floatingInput" name="correo"
+                            placeholder="name@example.com">
                         <label for="floatingInput">Correo</label>
-                      </div>
-                      <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" name="contrasena" placeholder="Password">
-                        <label for="floatingPassword">Contraseña</label>
-                      </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="mostrarContrasena">
-                      <label class="form-check-label" for="exampleCheck1">Mostrar contraseña</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                  </form>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" name="contrasena"
+                            placeholder="Password">
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="mostrarContrasena">
+                        <label class="form-check-label" for="exampleCheck1">Mostrar contraseña</label>
+                    </div>
+                    <button class="g-recaptcha btn btn-primary" data-sitekey="6Ld48SgpAAAAAG1mAGxaPZsLoBJmxpA0xjohM3kS"
+                        data-callback='onSubmit' data-action='submit'>Submit</button>
+                </form>
             </div>
         </div>
     </div>
@@ -52,6 +57,12 @@
             contrasenaInput.type = "password";
         }
     });
+</script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
 </script>
 
 </html>

@@ -42,29 +42,29 @@
           </div>
           <select style="margin-bottom: 2%;" class="form-select" name="id_municipio" aria-label="Seleccionar municipio">
             <option value="" selected>Seleccionar municipio</option>
-            <?php foreach ($municipios as $municipio) { ?>
-            <option value="<?php echo $municipio['ID_MUNICIPIO']; ?>">
-              <?php echo $municipio['NOMBRE']; ?>
+            {% for p in municipios%}
+            <option value="{{p.ID_MUNICIPIO}}">
+              {{p.NOMBRE}}
             </option>
-            <?php } ?>
+            {% endfor %}
           </select>
 
           <select style="margin-bottom: 2%;" class="form-select" name="id_estado" aria-label="Seleccionar colonia">
             <option value="" selected>Seleccionar estado</option>
-            <?php foreach ($estados as $estado) { ?>
-            <option value="<?php echo $estado['ID_ESTADO']; ?>">
-              <?php echo $estado['NOMBRE']; ?>
+            {% for p in estados%}
+            <option value="{{p.ID_ESTADO}}">
+              {{p.NOMBRE}}
             </option>
-            <?php } ?>
+            {% endfor %}
           </select>
 
           <select style="margin-bottom: 2%;" class="form-select" name="id_colonia" aria-label="Seleccionar colonia">
             <option value="" selected>Seleccionar colonia</option>
-            <?php foreach ($colonias as $colonia) { ?>
-            <option value="<?php echo $colonia['ID_COLONIA']; ?>">
-              <?php echo $colonia['NOMBRE']; ?>
+            {% for p in colonias %}
+            <option value="{{p.ID_COLONIA}}">
+              {{p.NOMBRE}}
             </option>
-            <?php } ?>
+            {%endfor%}
           </select>
 
           <div class="mb-3">

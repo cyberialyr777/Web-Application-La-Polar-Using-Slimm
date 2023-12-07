@@ -1,0 +1,12 @@
+<br />
+<b>Fatal error</b>:  Uncaught Slim\Exception\HttpNotFoundException: Not found. in C:\xampp\htdocs\proyecto_slim\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php:76
+Stack trace:
+#0 C:\xampp\htdocs\proyecto_slim\vendor\slim\slim\Slim\Routing\RouteRunner.php(56): Slim\Middleware\RoutingMiddleware-&gt;performRouting(Object(Slim\Psr7\Request))
+#1 C:\xampp\htdocs\proyecto_slim\vendor\slim\twig-view\src\TwigMiddleware.php(115): Slim\Routing\RouteRunner-&gt;handle(Object(Slim\Psr7\Request))
+#2 C:\xampp\htdocs\proyecto_slim\vendor\slim\slim\Slim\MiddlewareDispatcher.php(121): Slim\Views\TwigMiddleware-&gt;process(Object(Slim\Psr7\Request), Object(Slim\Routing\RouteRunner))
+#3 C:\xampp\htdocs\proyecto_slim\vendor\slim\slim\Slim\MiddlewareDispatcher.php(65): Psr\Http\Server\RequestHandlerInterface@anonymous-&gt;handle(Object(Slim\Psr7\Request))
+#4 C:\xampp\htdocs\proyecto_slim\vendor\slim\slim\Slim\App.php(199): Slim\MiddlewareDispatcher-&gt;handle(Object(Slim\Psr7\Request))
+#5 C:\xampp\htdocs\proyecto_slim\vendor\slim\slim\Slim\App.php(183): Slim\App-&gt;handle(Object(Slim\Psr7\Request))
+#6 C:\xampp\htdocs\proyecto_slim\index.php(76): Slim\App-&gt;run()
+#7 {main}
+  thrown in <b>C:\xampp\htdocs\proyecto_slim\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php</b> on line <b>76</b><br />

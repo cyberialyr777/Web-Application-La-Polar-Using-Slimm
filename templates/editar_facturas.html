@@ -5,74 +5,67 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inicio.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/clientes.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/proveedores.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/facturas.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/inventario.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/editar_clientes.css" />
+    <script src="./jquery/jquery.js" charset="utf-8"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/logo-azul.ico">
-
     <title>La Polar</title>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand" href="home">
-                <img class="user" src="assets/img/logo.png" alt="User" height="70 px" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="links collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="inicio nav-link" href="home">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="facturas nav-link" href="facturas">Facturas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="agrein nav-link" href="inventario">Inventario</a>
-                    </li>
-                </ul>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="<?php echo $url_base . '/inicio.php'; ?>">
+            <img class="user" src="assets/img/logo.png" alt="User" height="70 px" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="links collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="inicio nav-link" href="<?php echo $url_base . '/inicio.php'; ?>">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="facturas nav-link" href="<?php echo $url_base . '/facturas.php'; ?>">Facturas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="agrein nav-link" href="<?php echo $url_base . '/inventario.php'; ?>">Inventario</a>
+                </li>
+            </ul>
 
 
+            <span class="bb badge rounded-pill">
+                <img class="user" src="assets/img/user.png" alt="User" height="30 px" />
+                Melitón Morales
+            </span>
+            <a href="cerrar_sesion.php" style="background-color:#F7E2E2; margin-right: 2%;"
+                class="btn btn-sm ml-2">Salir</a>
+        </div>
+    </nav>
 
-                <span class="bb badge rounded-pill">
-                    <img class="user" src="assets/img/user.png" alt="User" height="30 px" />
-                    Melitón Morales
-                </span>
-                <a href="cerrarSesion" style="background-color:#F7E2E2; margin-right: 2%;"
-                    class="btn btn-sm ml-2">Salir</a>
+    <div class="container-fluid">
+        <div class="arriba row">
+            <div class="fuser col-sm-3">
+                <img class="user" src="assets/img/user.png" alt="User" height="70 px" />
+                <p> </p>
+                <h6 class="bien">Melitón Morales</h6>
+                <p class="ceo">CEO</p>
             </div>
-        </nav>
 
-        <div class="container-fluid">
-            <div class="arriba row">
-                <div class="fuser col-sm-3">
-                    <img class="user" src="assets/img/user.png" alt="User" height="70 px" />
-                    <p> </p>
-                    <h6 class="bien">Melitón Morales</h6>
-                    <p class="ceo">CEO</p>
-                </div>
+            <div class="bienn col-sm-9 ">
 
-                <div class="bienn col-sm-9 ">
-
-                    <h5 class="bien">Bienvenido, Melitón Morales</h5>
-
-                </div>
+                <h5 class="bien">Editar</h5>
 
             </div>
-    </header>
-    <main>
+
+        </div>
+
+
         <div class="abajo row">
             <div class="menu col-sm-3">
                 <div class="d-grid gap-2 d-md-block">
-                    <a href="home">
+                    <a href="<?php echo $url_base . '/inicio.php'; ?>">
                         <button class="binicio btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-house-door" viewBox="0 0 16 16">
@@ -83,7 +76,7 @@
                         </button>
                     </a>
 
-                    <a href="clientes">
+                    <a href="<?php echo $url_base . '/clientes.php'; ?>">
                         <button class="bclientes btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-people" viewBox="0 0 16 16">
@@ -96,7 +89,7 @@
                 </div>
 
                 <div class="d-grid gap-2 d-md-block">
-                    <a href="proveedores">
+                    <a href="<?php echo $url_base . '/proveedores.php'; ?>">
                         <button class="binicio btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-building" viewBox="0 0 16 16">
@@ -109,7 +102,7 @@
                         </button>
                     </a>
 
-                    <a href="credito">
+                    <a href="<?php echo $url_base . '/credito.php'; ?>">
                         <button class="bclientes btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-coin" viewBox="0 0 16 16">
@@ -125,7 +118,7 @@
                 </div>
 
                 <div class="d-grid gap-2 d-md-block">
-                    <a href="inventario">
+                    <a href="<?php echo $url_base . '/inventario.php'; ?>">
                         <button class="binicio btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-tools" viewBox="0 0 16 16">
@@ -136,7 +129,7 @@
                         </button>
                     </a>
 
-                    <a href="cobranza">
+                    <a href="<?php echo $url_base . '/cobranza.php'; ?>">
                         <button class="bclientes btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-piggy-bank" viewBox="0 0 16 16">
@@ -150,17 +143,48 @@
                     </a>
                 </div>
             </div>
-            {% block CUERPO%}
+            {% for f in facturas%}
+            <div class="col-sm-9" style="margin-bottom: 230px;">
+                <div class="container formulario">
+                    <form method="post" enctype="multipart/form-data" action="EditarFacturas">
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Número de factura</label>
+                            <input name="numero_de_factura" type="text" class="form-control" id="formGroupExampleInput2"
+                                placeholder="67" value="{{f.NUMERO_DE_FACTURA}}" disabled>
+                        </div>
+                        <select class="form-select muni" name="id_cliente" aria-label="Seleccionar cliente">
+                            <option value="" disabled>Seleccionar cliente</option>
+                            {% for f in clientes%}
+                            <option value="{{f.ID_CLIENTE}}">
+                                {{f.NOMBRE}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <div>
+                            <button value="{{f.NUMERO_DE_FACTURA}}" name="btn_editar" type="submit" class="guardar-btn btn">Guardar</button>
+                        </div>
 
-            {% endblock %}
-    </main>
-    <script src="assets/js/popover.js"></script>
-    <script src="assets/js/busqueda_clientes.js"></script>
-    <script src="assets/js/busqueda_cobranza.js"></script>
-    <script src="assets/js/busqueda_credito.js"></script>
-    <script src="assets/js/busqueda_facturas.js"></script>
-    <script src="assets/js/busqueda_inventario.js"></script>
-    <script src="assets/js/busqueda_proveedores.js"></script>
+                    </form>
+                </div>
+
+
+
+            </div>
+            {%endfor%}
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Copyright La Polar 2023</p>
+        </div>
+    </footer>
+
+
+    <script src="./js/popover.js"></script>
+
 </body>
 
 </html>

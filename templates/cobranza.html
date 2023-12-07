@@ -211,7 +211,7 @@
                                     </div>
                                     <select class="form-select" name="id_cliente" aria-label="Seleccionar cliente">
                                         <option value="" selected disabled>Seleccionar cliente/empresa</option>
-                                        {% for c in cobros %}
+                                        {% for c in clientes %}
                                             <option value="{{c.ID_CLIENTE}}">{{c.NOMBRE}}</option>
                                         {% endfor %}
                                     </select>

@@ -1,11 +1,6 @@
-
 .fuser {
     text-align: center;
     background-color: #1A132F !important;
-}
-
-.agrein {
-    cursor: pointer;
 }
 
 .links {
@@ -81,6 +76,8 @@
     height: 90px !important;
 }
 
+
+
 .bclientes {
     display: inline-block;
     margin-top: 8%;
@@ -100,13 +97,47 @@
     height: 90px !important;
 }
 
-a {
-    text-decoration: none !important;
-}
-
-.bi {
+.bi.bi-house-door {
     margin-top: 16%;
     fill: #5B7DB1;
+}
+
+.bi.bi-people {
+    margin-top: 16%;
+    fill: #5B7DB1;
+}
+
+.bi.bi-building {
+    margin-top: 16%;
+    fill: #5B7DB1;
+}
+
+.bi.bi-coin {
+    margin-top: 16%;
+    fill: #5B7DB1;
+}
+
+.bi.bi-tools {
+    margin-top: 16%;
+    fill: #5B7DB1;
+}
+
+.bi.bi-piggy-bank{
+    margin-top: 16%;
+    fill: #5B7DB1;
+}
+
+.bi.bi-plus-circle-fill{
+    fill: #f5f5f5;
+}
+
+.icon-add {
+    margin-left: 94%;
+    margin-top: 3%;
+}
+
+a {
+    text-decoration: none;
 }
 
 p {
@@ -116,7 +147,6 @@ p {
 .arriba.row {
     background-color: #1A132F !important;
     position:absolute;
-    /*margin-top: 6%;*/
     z-index: 1;
     width: 100%;
 }
@@ -129,139 +159,60 @@ p {
     width:100%;
 }
 
-
-.ccuadro {
-    background-color: whitesmoke;
-    margin-top: 6%;
-    /*width: 46%;*/
-    /*height: 43%;*/
-    width: 90%;
-    border-radius: 17px;
+.guardar-btn {
+    background-color: #1A132F;
+    color: #f5f5f5;
+    margin-top: 2%;
 }
 
-.cobross {
-    background-color: whitesmoke;
-    margin-top: 6%;
-    /* width: 46%;
-    height: 38%;
-    margin-left:50%; */
-    height: 37%;
-    width: 90%;
-    border-radius: 17px;
-
+.guardar-btn:hover {
+    color: #f5f5f5 !important;
 }
 
-.refatexto {
-    margin-left: 8%;
-    padding-top: 5%;
-    font-size: 129%;
+.guardar-btn:active {
+    background-color:#5B7DB1 !important;
+    color:#F7E2E2;
 }
 
-/* .adentroc {
-    border: 1px solid #a8a0c9;
-    border-radius: 8px;
-    width: 85%;
-    height: 60%;
+.bbuscar {
+    background-color:#312b4c;
+}
+
+.container.formulario {
+    background-color:#f5f5f5;
+    border-radius: 10px;
+    padding-bottom: 2%;
+}
+
+.form {
     margin-top: 5%;
-    margin-left: 8%;
-} */
-
-.adentrocc {
-    border: 1px solid #a8a0c9;
-    width: 85%;
-    height: 90%;
-    margin-top: 6%;
-    margin-left: 8%;
 }
 
-
-
-.adentroc p {
-    padding: 10px !important;
+.form-label.nombre {
+    margin-top: 2%;
 }
 
-.refacciones {
-    border: 1px solid #a8a0c9;
-    width: 85%;
-    margin-top: 5%;
-    margin-left: 8%;
+.form-select.muni {
+    margin-top: 2%;
 }
 
-.monto {
-    color: #1A132F;
-    margin-left: 11%;
-    font-size: 130%;
+.form-select.esta {
+    margin-top: 2%;
 }
 
-.dia {
-    color: #1A132F;
-    font-size: 130%;
-    margin-left: 3.3%;
+.form-select.colo {
+    margin-top: 2%;
 }
 
-.tcred {
-    color:#5B7DB1;
-    margin-left: 7.7%;
-}
-
-.pdf.col-sm-1 {
-    margin-left: 4%;
-    margin-top: 4.7%;
-}
-
-.col-sm-10 {
-    margin-left: 4%;
-    margin-top: 2.8%;
-}
-
-.col-sm-10 p {
-    color: #1A132F;
-}
-
-.tfec {
-    color:#5B7DB1;
-}
-
-.fact {
-    margin-top: 1%;
-    margin-left: 3%;
-    font-size: 85%;
+.form-label.correo {
+    margin-top: 2%;
 }
 
 .footer-main {
     height: 90px;
 }
 
-.row.container.calendario {
-    background-color: whitesmoke;
-    border-radius: 17px;
-    margin-top: 2%;
-}
-
-.calendar {
-    margin-top: 3%;
-    margin-left: -2%;
-    padding-bottom: 2%;
-}
-
-.titulo_google {
-    margin-top: 8%;
-    color: #1A132F;
-}
-
-.btn.btn-primary.btn-autorizar {
-    background-color: #1A132F;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    margin: 0 auto;
-    margin-top: 10%;
-}
-
 body {
     background-color: #F7E2E2;
     height: 100vh;
 }
-
-
-

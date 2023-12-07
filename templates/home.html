@@ -1,96 +1,274 @@
 {% extends "main.html"%}
 
 {% block CUERPO %}
+
 <div class="col-sm-9" style="margin-bottom: 230px;">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="ccuadro" style="padding-bottom: 5%;">
-          <h6 class="refatexto">Facturas</h6>
-          <?php foreach ($lista_facturas as $registros) { ?>
-          <div class="adentrocc">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ccuadro" style="padding-bottom: 5%;">
+        <h6 class="refatexto">Facturas</h6>
+        
+        {% for f in facturas %}
+        <div class="adentrocc">
+          <div class="row">
+            <div class="pdf col-sm-1" style="margin-top: 2.5%;">
+              <a href="#" class="pdf">
+                <svg width="30" height="30" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M14 4.5V14C14 15.1046 13.1046 16 12 16H11V15H12C12.5523 15 13 14.5523 13 14V4.5H11C10.1716 4.5 9.5 3.82843 9.5 3V1H4C3.44772 1 3 1.44772 3 2V11H2V2C2 0.89543 2.89543 0 4 0H9.5L14 4.5ZM1.59961 11.85H0V15.849H0.791016V14.5072H1.59375C1.88086 14.5072 2.125 14.4496 2.32617 14.3344C2.5293 14.2172 2.68359 14.059 2.78906 13.8598C2.89648 13.6586 2.9502 13.433 2.9502 13.183C2.9502 12.933 2.89746 12.7074 2.79199 12.5063C2.68652 12.3051 2.5332 12.1459 2.33203 12.0287C2.13281 11.9096 1.88867 11.85 1.59961 11.85ZM2.14453 13.183C2.14453 13.3315 2.11621 13.4584 2.05957 13.5639C2.00488 13.6674 1.92578 13.7475 1.82227 13.8041C1.71875 13.8588 1.59375 13.8861 1.44727 13.8861H0.788086V12.4799H1.44727C1.66602 12.4799 1.83691 12.5404 1.95996 12.6615C2.08301 12.7826 2.14453 12.9565 2.14453 13.183ZM3.36211 11.85V15.849H4.82109C5.22344 15.849 5.55645 15.7699 5.82012 15.6117C6.08574 15.4535 6.28398 15.224 6.41484 14.9232C6.5457 14.6225 6.61113 14.2611 6.61113 13.8393C6.61113 13.4193 6.5457 13.0609 6.41484 12.7641C6.28594 12.4672 6.08965 12.2406 5.82598 12.0844C5.5623 11.9281 5.22734 11.85 4.82109 11.85H3.36211ZM4.15312 12.4945H4.71562C4.96367 12.4945 5.1668 12.5453 5.325 12.6469C5.48516 12.7484 5.60332 12.8998 5.67949 13.101C5.75762 13.3022 5.79668 13.5531 5.79668 13.8539C5.79668 14.0805 5.77422 14.2777 5.7293 14.4457C5.68633 14.6137 5.6209 14.7543 5.53301 14.8676C5.44707 14.9789 5.33574 15.0629 5.19902 15.1195C5.0623 15.1742 4.90117 15.2016 4.71562 15.2016H4.15312V12.4945ZM7.89609 14.2582V15.849H7.10508V11.85H9.65391V12.5033H7.89609V13.6195H9.50156V14.2582H7.89609Z"
+                    fill="#E6162D" />
+                </svg>
+
+              </a>
+
+            </div>
+            <div class="col-sm-10">
+              <p>
+                <td><a class="link_factura" style="color: #1A132F;" href="__DIR__/archivos_facturas/{{ f.ARCHIVO }}"
+                    download>{{ f.ARCHIVO }}</a></td>
+
+              </p>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+
+
+
+
+      </div>
+
+    </div>
+    <div class="col-sm-6">
+
+      <div class="row">
+
+        {%for c in creditos%}
+        <div class="cobross" style="padding-bottom: 8.5%;">
+          <div class="row">
+            <h5 class="refatexto col-sm-7">
+              {{c.PROVEEDOR.NOMBRE}}
+            </h5>
+            
+            
+          </div>
+
+          <div class="adentroc"
+            style="border: 1px solid #a8a0c9;width: 85%;height: 60%;margin-top: 5%;margin-left: 8%;">
+            <p class="fact numFactura">Factura #
+              {{c.NUMERO_DE_FACTURA}}
+            </p>
             <div class="row">
-              <div class="pdf col-sm-1" style="margin-top: 2.5%;">
-                <a href="#" class="pdf">
-                  <svg width="30" height="30" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M14 4.5V14C14 15.1046 13.1046 16 12 16H11V15H12C12.5523 15 13 14.5523 13 14V4.5H11C10.1716 4.5 9.5 3.82843 9.5 3V1H4C3.44772 1 3 1.44772 3 2V11H2V2C2 0.89543 2.89543 0 4 0H9.5L14 4.5ZM1.59961 11.85H0V15.849H0.791016V14.5072H1.59375C1.88086 14.5072 2.125 14.4496 2.32617 14.3344C2.5293 14.2172 2.68359 14.059 2.78906 13.8598C2.89648 13.6586 2.9502 13.433 2.9502 13.183C2.9502 12.933 2.89746 12.7074 2.79199 12.5063C2.68652 12.3051 2.5332 12.1459 2.33203 12.0287C2.13281 11.9096 1.88867 11.85 1.59961 11.85ZM2.14453 13.183C2.14453 13.3315 2.11621 13.4584 2.05957 13.5639C2.00488 13.6674 1.92578 13.7475 1.82227 13.8041C1.71875 13.8588 1.59375 13.8861 1.44727 13.8861H0.788086V12.4799H1.44727C1.66602 12.4799 1.83691 12.5404 1.95996 12.6615C2.08301 12.7826 2.14453 12.9565 2.14453 13.183ZM3.36211 11.85V15.849H4.82109C5.22344 15.849 5.55645 15.7699 5.82012 15.6117C6.08574 15.4535 6.28398 15.224 6.41484 14.9232C6.5457 14.6225 6.61113 14.2611 6.61113 13.8393C6.61113 13.4193 6.5457 13.0609 6.41484 12.7641C6.28594 12.4672 6.08965 12.2406 5.82598 12.0844C5.5623 11.9281 5.22734 11.85 4.82109 11.85H3.36211ZM4.15312 12.4945H4.71562C4.96367 12.4945 5.1668 12.5453 5.325 12.6469C5.48516 12.7484 5.60332 12.8998 5.67949 13.101C5.75762 13.3022 5.79668 13.5531 5.79668 13.8539C5.79668 14.0805 5.77422 14.2777 5.7293 14.4457C5.68633 14.6137 5.6209 14.7543 5.53301 14.8676C5.44707 14.9789 5.33574 15.0629 5.19902 15.1195C5.0623 15.1742 4.90117 15.2016 4.71562 15.2016H4.15312V12.4945ZM7.89609 14.2582V15.849H7.10508V11.85H9.65391V12.5033H7.89609V13.6195H9.50156V14.2582H7.89609Z"
-                      fill="#E6162D" />
-                  </svg>
-
-                </a>
-
+              <div class="col-sm-6">
+                <h6 class="monto">$
+                  {{c.MONTO}}
+                </h6>
+                <p class="tcred">En crédito</p>
               </div>
-              <div class="col-sm-10">
-                <p><td><a style="color: #1A132F; text-decoration-line: underline;" href="<?php echo $url_base . 'archivos_facturas/' . $registros['ARCHIVO']; ?>" download><?php echo $registros['ARCHIVO']; ?></a></td>
-                
-                </p>
+              <div class="col-sm-6">
+                <h6 class="dia">
+                  {{c.FECHA_LIMITE}}
+                </h6>
+                <p class="tfec">Fecha Límite</p>
               </div>
             </div>
           </div>
-          <?php } ?>
-          
-          
-
-          
         </div>
-
+        {%endfor%}
       </div>
-      <div class="col-sm-6">
-      <?php $proveedoresData = obtenerProveedores($conexion); // Obtener los datos de los proveedores
-            $proveedores = $proveedoresData['proveedores']; // Extraer los proveedores
-            ?>
-            <div class="row">
 
-                <?php foreach ($lista_creditos as $registros) { ?>
-                    <div class="cobross" style="padding-bottom: 8.5%;">
-                        <div class="row">
-                            <h5 class="refatexto col-sm-7">
-                                <?php
-                                $idProveedor = $registros['ID_PROVEEDOR'];
-                                foreach ($proveedores as $proveedor) {
-                                    if ($proveedor['ID_PROVEEDOR'] === $idProveedor) {
-                                        echo $proveedor['NOMBRE']; // Mostrar el nombre del proveedor
-                                        break; // Salir del bucle una vez encontrado
-                                    }
-                                }
-                                ?>
-                            </h5>
-                            <a name="editar" id="" class="editar btn col-sm-1 btn-sm" href="editar_creditos.php?txtID=<?php echo $registros['NUMERO_DE_FACTURA']; ?>" role="button" style="margin-left: 12%;margin-top: 6%;">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.5016 1.93934C15.6969 2.1346 15.6969 2.45118 15.5016 2.64645L14.4587 3.68933L12.4587 1.68933L13.5016 0.646447C13.6969 0.451184 14.0134 0.451185 14.2087 0.646447L15.5016 1.93934Z" fill="#312B4C" fill-opacity="0.9" />
-                                    <path d="M13.7516 4.39644L11.7516 2.39644L4.93861 9.20943C4.88372 9.26432 4.84237 9.33123 4.81782 9.40487L4.01326 11.8186C3.94812 12.014 4.13405 12.1999 4.32949 12.1348L6.74317 11.3302C6.81681 11.3057 6.88372 11.2643 6.93861 11.2094L13.7516 4.39644Z" fill="#312B4C" fill-opacity="0.9" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 13.5C1 14.3284 1.67157 15 2.5 15H13.5C14.3284 15 15 14.3284 15 13.5V7.5C15 7.22386 14.7761 7 14.5 7C14.2239 7 14 7.22386 14 7.5V13.5C14 13.7761 13.7761 14 13.5 14H2.5C2.22386 14 2 13.7761 2 13.5V2.5C2 2.22386 2.22386 2 2.5 2H9C9.27614 2 9.5 1.77614 9.5 1.5C9.5 1.22386 9.27614 1 9 1H2.5C1.67157 1 1 1.67157 1 2.5V13.5Z" fill="#312B4C" fill-opacity="0.9" />
-                                </svg>
 
-                            </a>
-                            <a name="" id="" class="eliminar btn col-sm-1 btn-sm" href="<?php echo $_SERVER['PHP_SELF'] . '?eliminar=' . $registros['NUMERO_DE_FACTURA']; ?>" role="button" style="margin-top: 6%;">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2.5 1C1.94772 1 1.5 1.44772 1.5 2V3C1.5 3.55228 1.94772 4 2.5 4H3V13C3 14.1046 3.89543 15 5 15H11C12.1046 15 13 14.1046 13 13V4H13.5C14.0523 4 14.5 3.55228 14.5 3V2C14.5 1.44772 14.0523 1 13.5 1H10C10 0.447715 9.55229 0 9 0H7C6.44772 0 6 0.447715 6 1H2.5ZM5.5 5C5.77614 5 6 5.22386 6 5.5V12.5C6 12.7761 5.77614 13 5.5 13C5.22386 13 5 12.7761 5 12.5L5 5.5C5 5.22386 5.22386 5 5.5 5ZM8 5C8.27614 5 8.5 5.22386 8.5 5.5V12.5C8.5 12.7761 8.27614 13 8 13C7.72386 13 7.5 12.7761 7.5 12.5V5.5C7.5 5.22386 7.72386 5 8 5ZM11 5.5V12.5C11 12.7761 10.7761 13 10.5 13C10.2239 13 10 12.7761 10 12.5V5.5C10 5.22386 10.2239 5 10.5 5C10.7761 5 11 5.22386 11 5.5Z" fill="#312B4C" fill-opacity="0.9" />
-                                </svg>
-
-                            </a>
-                        </div>
-
-                        <div class="adentroc" style="border: 1px solid #a8a0c9;width: 85%;height: 60%;margin-top: 5%;margin-left: 8%;">
-                            <p class="fact numFactura">Factura #<?php echo $registros['NUMERO_DE_FACTURA']; ?></p>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h6 class="monto">$<?php echo $registros['MONTO']; ?></h6>
-                                    <p class="tcred">En crédito</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h6 class="dia"><?php echo $registros['FECHA_LIMITE']; ?></h6>
-                                    <p class="tfec">Fecha Límite</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-
-        
-      </div>
     </div>
-
   </div>
+  <div class="row container calendario" style="background-color: whitesmoke;
+  border-radius: 17px;
+  margin-top: 2%;">
+    <div class="col-sm-9">
+      <iframe class="calendar"
+        src="https://calendar.google.com/calendar/embed?src=marifer160204%40gmail.com&ctz=America%2FMexico_City" style="border: 0; margin-top: 3%;
+        margin-left: -2%;
+        padding-bottom: 2%;" width="700" height="500" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div class="col-sm-3">
+      <h5 class="titulo_google" style="margin-top: 8%;
+      color: #1A132F;">Inicia sesión en Google</h5>
+
+      <!--Add buttons to initiate auth sequence and sign out-->
+      <button id="authorize_button" class="btn btn-primary btn-autorizar" style="background-color: #1A132F;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      margin: 0 auto;
+      margin-top: 10%;" onclick="handleAuthClick()">Authorize</button>
+      <button id="signout_button" class="btn btn-primary btn-autorizar" style="background-color: #1A132F;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      margin: 0 auto;
+      margin-top: 10%; margin-bottom: 2%;" onclick="handleSignoutClick()">Sign Out</button>
+
+      <form id="eventForm">
+        <label class="form-label" for="eventName">Nombre del Evento:</label>
+        <input class="form-control" type="text" id="eventName" required><br>
+
+        <label class="form-label" for="eventDate">Día del Evento:</label>
+        <input class="form-control" type="date" id="eventDate" required><br>
+
+        <label class="form-label" for="eventTime">Hora del Evento:</label>
+        <input class="form-control" type="time" id="eventTime" required><br>
+
+        <button class="btn btn-primary btn-autorizar" type="button" style="background-color: #1A132F;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        margin: 0 auto;
+        margin-top: 10%;" onclick="agregarEvento()">Agregar Evento</button>
+      </form>
+
+      <!-- <pre id="content" style="white-space: pre-wrap;"></pre> -->
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  /* exported gapiLoaded */
+  /* exported gisLoaded */
+  /* exported handleAuthClick */
+  /* exported handleSignoutClick */
+
+  // TODO(developer): Set to client ID and API key from the Developer Console
+  const CLIENT_ID = '54319555468-da9ebsn4f3e9br2duvanon28ut268fla.apps.googleusercontent.com';
+  const API_KEY = 'AIzaSyDKE8z8KRr-Aw8yCwhLR1Wd0AYQ3fEz6Pw';
+
+  // Discovery doc URL for APIs used by the quickstart
+  const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+
+  // Authorization scopes required by the API; multiple scopes can be
+  // included, separated by spaces.
+  const SCOPES = 'https://www.googleapis.com/auth/calendar';
+
+  let tokenClient;
+  let gapiInited = false;
+  let gisInited = false;
+
+  document.getElementById('authorize_button').style.visibility = 'hidden';
+  document.getElementById('signout_button').style.visibility = 'hidden';
+
+  /**
+   * Callback after api.js is loaded.
+   */
+  function gapiLoaded() {
+    gapi.load('client', initializeGapiClient);
+  }
+
+  /**
+   * Callback after the API client is loaded. Loads the
+   * discovery doc to initialize the API.
+   */
+  async function initializeGapiClient() {
+    await gapi.client.init({
+      apiKey: API_KEY,
+      discoveryDocs: [DISCOVERY_DOC],
+    });
+    gapiInited = true;
+    maybeEnableButtons();
+  }
+
+  /**
+   * Callback after Google Identity Services are loaded.
+   */
+  function gisLoaded() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: CLIENT_ID,
+      scope: SCOPES,
+      callback: '', // defined later
+    });
+    gisInited = true;
+    maybeEnableButtons();
+  }
+
+  /**
+   * Enables user interaction after all libraries are loaded.
+   */
+  function maybeEnableButtons() {
+    if (gapiInited && gisInited) {
+      document.getElementById('authorize_button').style.visibility = 'visible';
+    }
+  }
+
+  /**
+   *  Sign in the user upon button click.
+   */
+  function handleAuthClick() {
+    tokenClient.callback = async (resp) => {
+      if (resp.error !== undefined) {
+        throw (resp);
+      }
+      document.getElementById('signout_button').style.visibility = 'visible';
+      document.getElementById('authorize_button').innerText = 'Refresh';
+      await listUpcomingEvents();
+    };
+
+    if (gapi.client.getToken() === null) {
+      // Prompt the user to select a Google Account and ask for consent to share their data
+      // when establishing a new session.
+      tokenClient.requestAccessToken({ prompt: 'consent' });
+    } else {
+      // Skip display of account chooser and consent dialog for an existing session.
+      tokenClient.requestAccessToken({ prompt: '' });
+    }
+  }
+
+  /**
+   *  Sign out the user upon button click.
+   */
+  function handleSignoutClick() {
+    const token = gapi.client.getToken();
+    if (token !== null) {
+      google.accounts.oauth2.revoke(token.access_token);
+      gapi.client.setToken('');
+      document.getElementById('content').innerText = '';
+      document.getElementById('authorize_button').innerText = 'Authorize';
+      document.getElementById('signout_button').style.visibility = 'hidden';
+    }
+  }
+
+  // Función para agregar un evento al calendario
+  function agregarEvento() {
+    const nombreEvento = document.getElementById('eventName').value;
+    const fechaEvento = document.getElementById('eventDate').value;
+    const horaEvento = document.getElementById('eventTime').value;
+
+    const fechaHoraInicio = new Date(`${fechaEvento}T${horaEvento}:00`);
+    const fechaHoraFin = new Date(fechaHoraInicio.getTime() + 60 * 60 * 1000); 
+
+    const evento = {
+      'summary': nombreEvento,
+      'start': {
+        'dateTime': fechaHoraInicio.toISOString(),
+        'timeZone': 'America/Mexico_City', 
+      },
+      'end': {
+        'dateTime': fechaHoraFin.toISOString(),
+        'timeZone': 'America/Mexico_City',
+      },
+    };
+
+    gapi.client.calendar.events.insert({
+      'calendarId': 'primary',
+      'resource': evento,
+    }).then(response => {
+      console.log('Evento agregado:', response);
+      alert('Evento agregado correctamente.');
+    }, error => {
+      console.error('Error al agregar el evento:', error);
+      alert('Hubo un error al agregar el evento. Verifica la consola para más detalles.');
+    })
+    location.reload();
+  }
+</script>
+<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+
 {% endblock %}

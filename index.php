@@ -10,6 +10,7 @@ use App\Controllers\InventarioController;
 use App\Controllers\FacturasController;
 use App\Controllers\IndexController;
 use App\Controllers\CobranzaController;
+use App\Controllers\EventController;
 
 require __DIR__ . '/vendor/autoload.php';
 $app = AppFactory::create();
@@ -30,8 +31,13 @@ $capsule -> addConnection([
 $capsule -> bootEloquent();
 $capsule -> setAsGlobal();
 
+$client = new Google_Client();
+$client->setAuthConfig('assets/credentials.json');
+
 $app->setBasePath('/proyecto_slim');
+//rutas home 
 $app->get('/home', HomeController::class . ':index');
+// $app->get('/obtener_facturas', FacturasController::class . ':obtener_facturas');
 //rutas clientes
 $app->get('/clientes', ClientesController::class . ':index');
 $app->post('/clientes', ClientesController::class . ':agregar_cliente');
@@ -58,13 +64,20 @@ $app->post('/EditarDeudas', CreditoController::class . ':editar_deudas');
 $app->post('/PaginaEditarDeudas', CreditoController::class . ':indexEditarDeudas');
 //rutas factura
 $app->get('/facturas', FacturasController::class . ':index');
+$app->post('/facturas', FacturasController::class . ':agregar_factura');
+$app->post('/facturasEliminar', FacturasController::class . ':eliminar_factura');
+$app->post('/EditarFacturas', FacturasController::class . ':editar_facturas');
+$app->post('/PaginaEditarFacturas', FacturasController::class . ':indexEditarFacturas');
 //rutas inicio de sesión
 $app->get('/index', IndexController::class . ':index');
+$app->post('/index', IndexController::class . ':inicio_sesion');
+$app->get('/cerrarSesion', IndexController::class . ':cerrarSesion');
 // rutas cobros
 $app->get('/cobranza', CobranzaController::class . ':index');
 $app->post('/cobranza', CobranzaController::class . ':agregar_cobro');
 $app->post('/cobrosEliminar', CobranzaController::class . ':eliminar_cobro');
 $app->post('/EditarCobros', CobranzaController::class . ':editar_cobros');
 $app->post('/PaginaEditarCobros', CobranzaController::class . ':indexEditarCobros');
+
 $app->run();
 ?>
