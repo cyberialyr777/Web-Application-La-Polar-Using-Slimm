@@ -191,6 +191,50 @@
             </div>
     </main>
     <script src="assets/js/popover.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const form = document.querySelector('form');
+          const mensajeError = document.createElement('div');
+          mensajeError.className = 'alert alert-danger';
+          mensajeError.style.display = 'none';
+          mensajeError.textContent = 'Aún faltan campos por completar o hay valores no válidos.';
+      
+          form.querySelector('.guardar-btn').insertAdjacentElement('beforebegin', mensajeError);
+      
+          form.addEventListener('submit', function (event) {
+            if (!validarFormulario()) {
+              // Si la validación no es exitosa, evita el envío del formulario
+              event.preventDefault();
+              mensajeError.style.display = 'block';
+            } else {
+              // Aquí puedes realizar otras acciones si es necesario antes del envío del formulario
+              console.log('Formulario enviado');
+            }
+          });
+      
+          // Añadir eventos de input para validar que solo se ingresen números en teléfono, cp y número
+          const camposNumericos = ['numero_de_factura', 'monto'];
+          camposNumericos.forEach(function (campo) {
+            const inputCampo = form.querySelector(`[name="${campo}"]`);
+            inputCampo.addEventListener('input', function () {
+              this.value = this.value.replace(/\D/g, ''); // Filtra y elimina no números
+            });
+          });
+      
+          function validarFormulario() {
+            const camposRequeridos = ['id_proveedor', 'monto'];
+      
+            for (const campo of camposRequeridos) {
+              const valorCampo = form.querySelector(`[name="${campo}"]`).value.trim();
+              if (valorCampo === '') {
+                return false;
+              }
+            }
+      
+            return true;
+          }
+        });
+      </script>
 </body>
 
 </html>

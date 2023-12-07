@@ -187,32 +187,31 @@
                             <form method="post">
                                 <div class="form">
                                     <div class="mb-3">
-                                        <label for="formGroupExampleInput" class="form-label">Servicio</label>
-                                        <input name="servicio" type="text" class="form-control"
-                                            id="formGroupExampleInput" placeholder="Cambio de bandas">
+                                        <label for="servicio" class="form-label">Servicio</label>
+                                        <input name="servicio" type="text" class="form-control" id="servicio"
+                                            placeholder="Cambio de bandas">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="formGroupExampleInput2" class="form-label">Número de factura</label>
+                                        <label for="numero_de_factura" class="form-label">Número de factura</label>
                                         <input name="numero_de_factura" type="text" class="form-control"
-                                            id="formGroupExampleInput2" placeholder="Factura #67">
+                                            id="numero_de_factura" placeholder="Factura #67">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="formGroupExampleInput2" class="form-label">En crédito</label>
-                                        <input name="monto" type="text" class="form-control" id="formGroupExampleInput2"
+                                        <label for="monto" class="form-label">En crédito</label>
+                                        <input name="monto" type="text" class="form-control" id="monto"
                                             placeholder="3456">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="formGroupExampleInput2" class="form-label">Fecha Límite</label>
+                                        <label for="fecha_limite" class="form-label">Fecha Límite</label>
                                         <div class="input-group date fj-date">
-
-                                            <input name="fecha_limite" type="text" class="form-control"><span
+                                            <input name="fecha_limite" type="text" class="form-control" id="fecha_limite"><span
                                                 class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                         </div>
                                     </div>
-                                    <select class="form-select" name="id_cliente" aria-label="Seleccionar cliente">
+                                    <select for="id_cliente" class="form-select" name="id_cliente" aria-label="Seleccionar cliente">
                                         <option value="" selected disabled>Seleccionar cliente/empresa</option>
                                         {% for c in clientes %}
-                                            <option value="{{c.ID_CLIENTE}}">{{c.NOMBRE}}</option>
+                                        <option value="{{c.ID_CLIENTE}}">{{c.NOMBRE}}</option>
                                         {% endfor %}
                                     </select>
 
@@ -233,23 +232,25 @@
                         <div class="row">
                             <h5 class="refatexto col-sm-8">{{c.SERVICIO}}</h5>
                             <form action="PaginaEditarCobros" method="post">
-                                <button class="editar btn col-sm-1 btn-sm" value="{{c.NUMERO_DE_FACTURA}}" name="numero_de_factura" type="submit">
+                                <button class="editar btn col-sm-1 btn-sm" value="{{c.NUMERO_DE_FACTURA}}"
+                                    name="numero_de_factura" type="submit">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.5016 1.93934C15.6969 2.1346 15.6969 2.45118 15.5016 2.64645L14.4587 3.68933L12.4587 1.68933L13.5016 0.646447C13.6969 0.451184 14.0134 0.451185 14.2087 0.646447L15.5016 1.93934Z"
-                                        fill="#312B4C" fill-opacity="0.9" />
-                                    <path
-                                        d="M13.7516 4.39644L11.7516 2.39644L4.93861 9.20943C4.88372 9.26432 4.84237 9.33123 4.81782 9.40487L4.01326 11.8186C3.94812 12.014 4.13405 12.1999 4.32949 12.1348L6.74317 11.3302C6.81681 11.3057 6.88372 11.2643 6.93861 11.2094L13.7516 4.39644Z"
-                                        fill="#312B4C" fill-opacity="0.9" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M1 13.5C1 14.3284 1.67157 15 2.5 15H13.5C14.3284 15 15 14.3284 15 13.5V7.5C15 7.22386 14.7761 7 14.5 7C14.2239 7 14 7.22386 14 7.5V13.5C14 13.7761 13.7761 14 13.5 14H2.5C2.22386 14 2 13.7761 2 13.5V2.5C2 2.22386 2.22386 2 2.5 2H9C9.27614 2 9.5 1.77614 9.5 1.5C9.5 1.22386 9.27614 1 9 1H2.5C1.67157 1 1 1.67157 1 2.5V13.5Z"
-                                        fill="#312B4C" fill-opacity="0.9" />
-                                </svg>
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.5016 1.93934C15.6969 2.1346 15.6969 2.45118 15.5016 2.64645L14.4587 3.68933L12.4587 1.68933L13.5016 0.646447C13.6969 0.451184 14.0134 0.451185 14.2087 0.646447L15.5016 1.93934Z"
+                                            fill="#312B4C" fill-opacity="0.9" />
+                                        <path
+                                            d="M13.7516 4.39644L11.7516 2.39644L4.93861 9.20943C4.88372 9.26432 4.84237 9.33123 4.81782 9.40487L4.01326 11.8186C3.94812 12.014 4.13405 12.1999 4.32949 12.1348L6.74317 11.3302C6.81681 11.3057 6.88372 11.2643 6.93861 11.2094L13.7516 4.39644Z"
+                                            fill="#312B4C" fill-opacity="0.9" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M1 13.5C1 14.3284 1.67157 15 2.5 15H13.5C14.3284 15 15 14.3284 15 13.5V7.5C15 7.22386 14.7761 7 14.5 7C14.2239 7 14 7.22386 14 7.5V13.5C14 13.7761 13.7761 14 13.5 14H2.5C2.22386 14 2 13.7761 2 13.5V2.5C2 2.22386 2.22386 2 2.5 2H9C9.27614 2 9.5 1.77614 9.5 1.5C9.5 1.22386 9.27614 1 9 1H2.5C1.67157 1 1 1.67157 1 2.5V13.5Z"
+                                            fill="#312B4C" fill-opacity="0.9" />
+                                    </svg>
                                 </button>
                             </form>
                             <form action="cobrosEliminar" method="post">
-                                <button class="eliminar btn col-sm-1 btn-sm" value="{{c.NUMERO_DE_FACTURA}}" name="id" type="submit">
+                                <button class="eliminar btn col-sm-1 btn-sm" value="{{c.NUMERO_DE_FACTURA}}" name="id"
+                                    type="submit">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -294,10 +295,55 @@
             <p>Copyright La Polar 2023</p>
         </div>
     </footer>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const form = document.querySelector('form');
+          const mensajeError = document.createElement('div');
+          mensajeError.className = 'alert alert-danger';
+          mensajeError.style.display = 'none';
+          mensajeError.textContent = 'Aún faltan campos por completar o hay valores no válidos.';
+      
+          form.querySelector('.guardar-btn').insertAdjacentElement('beforebegin', mensajeError);
+      
+          form.addEventListener('submit', function (event) {
+            if (!validarFormulario()) {
+              // Si la validación no es exitosa, evita el envío del formulario
+              event.preventDefault();
+              mensajeError.style.display = 'block';
+            } else {
+              // Aquí puedes realizar otras acciones si es necesario antes del envío del formulario
+              console.log('Formulario enviado');
+            }
+          });
+      
+          // Añadir eventos de input para validar que solo se ingresen números en teléfono, cp y número
+          const camposNumericos = ['numero_de_factura', 'monto'];
+          camposNumericos.forEach(function (campo) {
+            const inputCampo = form.querySelector(`[name="${campo}"]`);
+            inputCampo.addEventListener('input', function () {
+              this.value = this.value.replace(/\D/g, ''); // Filtra y elimina no números
+            });
+          });
+      
+          function validarFormulario() {
+            const camposRequeridos = ['numero_de_factura', 'servicio', 'monto', 'id_cliente'];
+      
+            for (const campo of camposRequeridos) {
+              const valorCampo = form.querySelector(`[name="${campo}"]`).value.trim();
+              if (valorCampo === '') {
+                return false;
+              }
+            }
+      
+            return true;
+          }
+        });
+      </script>
     <script src="assets/js/popover.js"></script>
     <script src="assets/js/busqueda_cobranza.js"></script>
+    
 
 </body>
+
 
 </html>

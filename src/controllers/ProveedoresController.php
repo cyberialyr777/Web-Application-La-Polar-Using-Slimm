@@ -32,6 +32,8 @@ class ProveedoresController {
         $nuevoCliente->ID_COLONIA = $data['id_colonia'];
         $nuevoCliente->ID_ESTADO = $data['id_estado'];
         $nuevoCliente->CORREO = $data['correo'];
+        $nuevoCliente->CALLE = $data['calle'];
+        $nuevoCliente->NUMERO = $data['numero'];
         $nuevoCliente->REPRESENTANTE_NOMBRE = $data['representante_nombre'];
         $nuevoCliente->REPRESENTANTE_APELLIDO_PATERNO = $data['representante_apellido_paterno'];
         $nuevoCliente->FECHA_CREACION = date('Y-m-d H:i:s');
@@ -67,6 +69,8 @@ class ProveedoresController {
         $nuevoCliente->NOMBRE = $data['nombre'];
         $nuevoCliente->TELEFONO = $data['telefono'];
         $nuevoCliente->C_P_ = $data['cp'];
+        $nuevoCliente->CALLE = $data['calle'];
+        $nuevoCliente->NUMERO = $data['numero'];
         $nuevoCliente->ID_MUNICIPIO = $data['id_municipio'];
         $nuevoCliente->ID_COLONIA = $data['id_colonia'];
         $nuevoCliente->ID_ESTADO = $data['id_estado'];
