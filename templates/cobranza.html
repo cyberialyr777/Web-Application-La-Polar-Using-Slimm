@@ -45,8 +45,7 @@
                 <img class="user" src="assets/img/user.png" alt="User" height="30 px" />
                 Melitón Morales
             </span>
-            <a href="cerrar_sesion.php" style="background-color:#F7E2E2; margin-right: 2%;"
-                class="btn btn-sm ml-2">Salir</a>
+            <a href="cerrarSesion" style="background-color:#F7E2E2; margin-right: 2%;" class="btn btn-sm ml-2">Salir</a>
         </div>
     </nav>
 
@@ -193,7 +192,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="numero_de_factura" class="form-label">Número de factura</label>
-                                        <input name="numero_de_factura" type="text" class="form-control"
+                                        <input name="numero_de_factura" type="number" class="form-control"
                                             id="numero_de_factura" placeholder="Factura #67">
                                     </div>
                                     <div class="mb-3">
@@ -204,11 +203,13 @@
                                     <div class="mb-3">
                                         <label for="fecha_limite" class="form-label">Fecha Límite</label>
                                         <div class="input-group date fj-date">
-                                            <input name="fecha_limite" type="text" class="form-control" id="fecha_limite"><span
-                                                class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                            <input name="fecha_limite" type="text" class="form-control"
+                                                id="fecha_limite"><span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-th"></i></span>
                                         </div>
                                     </div>
-                                    <select for="id_cliente" class="form-select" name="id_cliente" aria-label="Seleccionar cliente">
+                                    <select for="id_cliente" class="form-select" name="id_cliente"
+                                        aria-label="Seleccionar cliente">
                                         <option value="" selected disabled>Seleccionar cliente/empresa</option>
                                         {% for c in clientes %}
                                         <option value="{{c.ID_CLIENTE}}">{{c.NOMBRE}}</option>
@@ -230,9 +231,9 @@
                     {%for c in cobros%}
                     <div class="cobross" style="padding-bottom: 4%">
                         <div class="row">
-                            <h5 class="refatexto col-sm-8">{{c.SERVICIO}}</h5>
-                            <form action="PaginaEditarCobros" method="post">
-                                <button class="editar btn col-sm-1 btn-sm" value="{{c.NUMERO_DE_FACTURA}}"
+                            <h5 class="refatexto col-sm-7">{{c.SERVICIO}}</h5>
+                            <form class="col-sm-2" action="PaginaEditarCobros" method="post" style="margin-top: 6%;">
+                                <button class="editar btn btn-sm" value="{{c.NUMERO_DE_FACTURA}}"
                                     name="numero_de_factura" type="submit">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -248,8 +249,8 @@
                                     </svg>
                                 </button>
                             </form>
-                            <form action="cobrosEliminar" method="post">
-                                <button class="eliminar btn col-sm-1 btn-sm" value="{{c.NUMERO_DE_FACTURA}}" name="id"
+                            <form action="cobrosEliminar" method="post" class="col-sm-2" style="margin-top: 6%;">
+                                <button class="eliminar btn btn-sm" value="{{c.NUMERO_DE_FACTURA}}" name="id"
                                     type="submit">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -297,51 +298,51 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-          const form = document.querySelector('form');
-          const mensajeError = document.createElement('div');
-          mensajeError.className = 'alert alert-danger';
-          mensajeError.style.display = 'none';
-          mensajeError.textContent = 'Aún faltan campos por completar o hay valores no válidos.';
-      
-          form.querySelector('.guardar-btn').insertAdjacentElement('beforebegin', mensajeError);
-      
-          form.addEventListener('submit', function (event) {
-            if (!validarFormulario()) {
-              // Si la validación no es exitosa, evita el envío del formulario
-              event.preventDefault();
-              mensajeError.style.display = 'block';
-            } else {
-              // Aquí puedes realizar otras acciones si es necesario antes del envío del formulario
-              console.log('Formulario enviado');
-            }
-          });
-      
-          // Añadir eventos de input para validar que solo se ingresen números en teléfono, cp y número
-          const camposNumericos = ['numero_de_factura', 'monto'];
-          camposNumericos.forEach(function (campo) {
-            const inputCampo = form.querySelector(`[name="${campo}"]`);
-            inputCampo.addEventListener('input', function () {
-              this.value = this.value.replace(/\D/g, ''); // Filtra y elimina no números
+            const form = document.querySelector('form');
+            const mensajeError = document.createElement('div');
+            mensajeError.className = 'alert alert-danger';
+            mensajeError.style.display = 'none';
+            mensajeError.textContent = 'Aún faltan campos por completar o hay valores no válidos.';
+
+            form.querySelector('.guardar-btn').insertAdjacentElement('beforebegin', mensajeError);
+
+            form.addEventListener('submit', function (event) {
+                if (!validarFormulario()) {
+
+                    event.preventDefault();
+                    mensajeError.style.display = 'block';
+                } else {
+
+                    console.log('Formulario enviado');
+                }
             });
-          });
-      
-          function validarFormulario() {
-            const camposRequeridos = ['numero_de_factura', 'servicio', 'monto', 'id_cliente'];
-      
-            for (const campo of camposRequeridos) {
-              const valorCampo = form.querySelector(`[name="${campo}"]`).value.trim();
-              if (valorCampo === '') {
-                return false;
-              }
+
+            
+            //   const camposNumericos = ['numero_de_factura', 'monto'];
+            //   camposNumericos.forEach(function (campo) {
+            //     const inputCampo = form.querySelector(`[name="${campo}"]`);
+            //     inputCampo.addEventListener('input', function () {
+            //       this.value = this.value.replace(/\D/g, ''); // Filtra y elimina no números
+            //     });
+            //   });
+
+            function validarFormulario() {
+                const camposRequeridos = ['numero_de_factura', 'servicio', 'monto', 'id_cliente'];
+
+                for (const campo of camposRequeridos) {
+                    const valorCampo = form.querySelector(`[name="${campo}"]`).value.trim();
+                    if (valorCampo === '') {
+                        return false;
+                    }
+                }
+
+                return true;
             }
-      
-            return true;
-          }
         });
-      </script>
+    </script>
     <script src="assets/js/popover.js"></script>
     <script src="assets/js/busqueda_cobranza.js"></script>
-    
+
 
 </body>
 

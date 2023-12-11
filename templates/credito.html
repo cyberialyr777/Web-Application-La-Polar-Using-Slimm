@@ -44,7 +44,7 @@
                 <img class="user" src="assets/img/user.png" alt="User" height="30 px" />
                 Melitón Morales
             </span>
-            <a href="cerrar_sesion.php" style="background-color:#F7E2E2; margin-right: 2%;"
+            <a href="cerrarSesion" style="background-color:#F7E2E2; margin-right: 2%;"
                 class="btn btn-sm ml-2">Salir</a>
         </div>
     </nav>
@@ -185,7 +185,7 @@
                             </div>
                             <form method="post">
                                 <div class="form">
-                                    <select style="margin-bottom: 2%;" class="form-select" name="id_proveedor"
+                                    <select for="id_proveedor" id="id_proveedor" style="margin-bottom: 2%;" class="form-select" name="id_proveedor"
                                         aria-label="Seleccionar proveedor">
                                         <option value="" selected disabled>Seleccionar proveedor</option>
                                         {% for d in proveedores%}
@@ -194,12 +194,12 @@
                                     </select>
                                     <div class="mb-3">
                                         <label for="numero_de_factura" class="form-label">Número de factura</label>
-                                        <input type="text" class="form-control numero_de_factura"
-                                            name="numero_de_factura" id="formGroupExampleInput2" placeholder="56">
+                                        <input type="number" class="form-control numero_de_factura"
+                                            name="numero_de_factura" id="numero_de_factura" for="numero_de_factura" placeholder="56">
                                     </div>
                                     <div class="mb-3">
                                         <label for="formGroupExampleInput2" class="form-label">En crédito</label>
-                                        <input name="monto" type="text" class="form-control" id="formGroupExampleInput2"
+                                        <input name="monto" type="number" class="form-control" id="monto" for="monto"
                                             placeholder="2344">
                                     </div>
                                     <div class="mb-3">
@@ -227,8 +227,8 @@
                             <h5 class="refatexto col-sm-7">
                                 {{d.PROVEEDOR.NOMBRE}}
                             </h5>
-                            <form action="PaginaEditarDeudas" method="post" class="col-sm-3">
-                                <button class="editar btn col-sm-3 btn-sm" value="{{d.NUMERO_DE_FACTURA}}"
+                            <form action="PaginaEditarDeudas" method="post" class="col-sm-2" style="margin-top: 6%; ">
+                                <button class="editar btn btn-sm" value="{{d.NUMERO_DE_FACTURA}}"
                                     name="numero_de_factura" type="submit">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -244,8 +244,8 @@
                                     </svg>
                                 </button>
                             </form>
-                            <form action="deudasEliminar" method="post" class="col-sm-3">
-                                <button class="eliminar btn col-sm-2 btn-sm" value="{{d.NUMERO_DE_FACTURA}}" name="id"
+                            <form action="deudasEliminar" method="post" class="col-sm-2" style="margin-top: 6%;">
+                                <button class="eliminar btn btn-sm" value="{{d.NUMERO_DE_FACTURA}}" name="id"
                                     type="submit">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -291,23 +291,21 @@
       
           form.addEventListener('submit', function (event) {
             if (!validarFormulario()) {
-              // Si la validación no es exitosa, evita el envío del formulario
+              
               event.preventDefault();
               mensajeError.style.display = 'block';
             } else {
-              // Aquí puedes realizar otras acciones si es necesario antes del envío del formulario
               console.log('Formulario enviado');
             }
           });
       
-          // Añadir eventos de input para validar que solo se ingresen números en teléfono, cp y número
-          const camposNumericos = ['numero_de_factura', 'monto'];
-          camposNumericos.forEach(function (campo) {
-            const inputCampo = form.querySelector(`[name="${campo}"]`);
-            inputCampo.addEventListener('input', function () {
-              this.value = this.value.replace(/\D/g, ''); // Filtra y elimina no números
-            });
-          });
+        //   const camposNumericos = ['telefono', 'cp', 'numero'];
+        //   camposNumericos.forEach(function (campo) {
+        //     const inputCampo = form.querySelector(`[name="${campo}"]`);
+        //     inputCampo.addEventListener('input', function () {
+        //       this.value = this.value.replace(/\D/g, ''); // Filtra y elimina no números
+        //     });
+        //   });
       
           function validarFormulario() {
             const camposRequeridos = ['id_proveedor', 'numero_de_factura', 'monto'];

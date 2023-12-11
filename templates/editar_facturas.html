@@ -14,7 +14,7 @@
 <body>
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="<?php echo $url_base . '/inicio.php'; ?>">
+        <a class="navbar-brand" href="home">
             <img class="user" src="assets/img/logo.png" alt="User" height="70 px" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -24,13 +24,13 @@
         <div class="links collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="inicio nav-link" href="<?php echo $url_base . '/inicio.php'; ?>">Inicio</a>
+                    <a class="inicio nav-link" href="home">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="facturas nav-link" href="<?php echo $url_base . '/facturas.php'; ?>">Facturas</a>
+                    <a class="facturas nav-link" href="facturas">Facturas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="agrein nav-link" href="<?php echo $url_base . '/inventario.php'; ?>">Inventario</a>
+                    <a class="agrein nav-link" href="inventario">Inventario</a>
                 </li>
             </ul>
 
@@ -39,7 +39,7 @@
                 <img class="user" src="assets/img/user.png" alt="User" height="30 px" />
                 Melitón Morales
             </span>
-            <a href="cerrar_sesion.php" style="background-color:#F7E2E2; margin-right: 2%;"
+            <a href="cerrarSesion" style="background-color:#F7E2E2; margin-right: 2%;"
                 class="btn btn-sm ml-2">Salir</a>
         </div>
     </nav>
@@ -65,7 +65,7 @@
         <div class="abajo row">
             <div class="menu col-sm-3">
                 <div class="d-grid gap-2 d-md-block">
-                    <a href="<?php echo $url_base . '/inicio.php'; ?>">
+                    <a href="home">
                         <button class="binicio btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-house-door" viewBox="0 0 16 16">
@@ -76,7 +76,7 @@
                         </button>
                     </a>
 
-                    <a href="<?php echo $url_base . '/clientes.php'; ?>">
+                    <a href="clientes">
                         <button class="bclientes btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-people" viewBox="0 0 16 16">
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="d-grid gap-2 d-md-block">
-                    <a href="<?php echo $url_base . '/proveedores.php'; ?>">
+                    <a href="proveedores">
                         <button class="binicio btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-building" viewBox="0 0 16 16">
@@ -102,7 +102,7 @@
                         </button>
                     </a>
 
-                    <a href="<?php echo $url_base . '/credito.php'; ?>">
+                    <a href="credito">
                         <button class="bclientes btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-coin" viewBox="0 0 16 16">
@@ -118,7 +118,7 @@
                 </div>
 
                 <div class="d-grid gap-2 d-md-block">
-                    <a href="<?php echo $url_base . '/inventario.php'; ?>">
+                    <a href="inventario">
                         <button class="binicio btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-tools" viewBox="0 0 16 16">
@@ -129,7 +129,7 @@
                         </button>
                     </a>
 
-                    <a href="<?php echo $url_base . '/cobranza.php'; ?>">
+                    <a href="cobranza">
                         <button class="bclientes btn btn-primary" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-piggy-bank" viewBox="0 0 16 16">
